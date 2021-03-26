@@ -160,14 +160,14 @@
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button jogXplusbutton;
+/*        private System.Windows.Forms.Button jogXplusbutton;
         private System.Windows.Forms.Button jogXminusbutton;
         private System.Windows.Forms.Button jogYminusbutton;
         private System.Windows.Forms.Button jogZminusbutton;
         private System.Windows.Forms.Button jogAminusbutton;
         private System.Windows.Forms.Button jogYplusbutton;
         private System.Windows.Forms.Button jogZplusbutton;
-        private System.Windows.Forms.Button jogAplusbutton;
+        private System.Windows.Forms.Button jogAplusbutton;*/
         private System.Windows.Forms.Button button1;
 
     }

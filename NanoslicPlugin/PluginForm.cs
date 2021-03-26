@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Plugins
 {
@@ -141,7 +143,13 @@ namespace Plugins
         private void button1_Click(object sender, EventArgs e)
         {
             List<Plugininterface.Datatypes.Layerdatastruct> Ldata = UC.Getlayerslist(true);
-            MessageBox.Show("" + Ldata[1].Isactive); 
+            MessageBox.Show("" + Ldata[1].Isactive);
+            WriteGcode();
+        }
+
+        private void WriteGcode()
+        {
+            File.WriteAllText("test.txt", "test write");
         }
  
     }
