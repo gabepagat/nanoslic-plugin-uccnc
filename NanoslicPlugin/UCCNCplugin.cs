@@ -29,7 +29,7 @@ namespace Plugins
         //Called when the plugin is loaded, the author of the plugin should set the details of the plugin here.
         public Plugininterface.Entry.Pluginproperties Getproperties_event(Plugininterface.Entry.Pluginproperties Properties)
         {
-            Properties.author = "CNCdrive Kft.";
+            Properties.author= "Gabe Pagat";
             Properties.pluginname = "NanoslicPlugin"; 
             Properties.pluginversion = "1.0000";
             return Properties;
@@ -95,12 +95,12 @@ namespace Plugins
 
             try
             {
-                myform.label1.Text = "X: " + UC.Getfield(true, 226);
+/*                myform.label1.Text = "X: " + UC.Getfield(true, 226);
                 myform.label2.Text = "Y: " + UC.Getfield(true, 227);
                 myform.label3.Text = "Z: " + UC.Getfield(true, 228);
                 myform.label4.Text = "A: " + UC.Getfield(true, 229); 
                 myform.label5.Text = "Set feed: " + UC.Getfield(true, 867);
-                myform.label6.Text = "Act feed: " + UC.Getfield(true, 868);
+                myform.label6.Text = "Act feed: " + UC.Getfield(true, 868);*/
             }
             catch (Exception) { }
 
@@ -118,11 +118,11 @@ namespace Plugins
                 if (Message is string)
                 {
                     string receivedstr = Message as string;
-                    MessageBox.Show(this.myform, "Informplugin message received by Plugintest! Message was: " + receivedstr);
+                    MessageBox.Show(this.myform, "Informplugin message received by NanoslicPlugin! Message was: " + receivedstr);
                 }
             }
 
-            string returnstr = "Return string by Plugintest";
+            string returnstr = "Return string by NanoslicPlugin";
             return (object)returnstr;
         }
 
@@ -134,7 +134,7 @@ namespace Plugins
             if (!(myform == null || myform.IsDisposed))
             {
                 string receivedstr = Message as string;
-                MessageBox.Show(this.myform, "Informplugins message received by Plugintest! Message was: " + receivedstr);
+                MessageBox.Show(this.myform, "Informplugins message received by NanoslicPlugin! Message was: " + receivedstr);
             }
         }
 
