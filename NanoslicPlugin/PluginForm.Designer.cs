@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.x_value = new double();
+            this.y_value = new double();
+            this.z_value = new double();
+
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -153,6 +157,8 @@
         }
 
         #endregion
+
+        public double x_value, y_value, z_value;
 
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label2;

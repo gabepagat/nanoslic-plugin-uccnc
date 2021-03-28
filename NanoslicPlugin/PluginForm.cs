@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace Plugins
 {
@@ -16,6 +15,7 @@ namespace Plugins
         private Plugininterface.Entry UC;
         UCCNCplugin Pluginmain;
         bool mustclose = false;
+        const string PATH = @".\Nanoslic_gcode";
 
         public PluginForm(UCCNCplugin Pluginmain)
         {
@@ -26,7 +26,7 @@ namespace Plugins
 
         private void PluginForm_Load(object sender, EventArgs e)
         {
-            CheckForIllegalCrossThreadCalls = false;  
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         private void jogXplusbutton_MouseDown(object sender, MouseEventArgs e)
@@ -149,8 +149,20 @@ namespace Plugins
 
         private void WriteGcode()
         {
-            File.WriteAllText("test.txt", "test write");
+            try
+            {
+                String g_code = "%\nG21 G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000M3";
+                if (!Directory.Exists(PATH))
+                {
+                    DirectoryInfo di = Directory.CreateDirectory(PATH);
+                }
+                File.WriteAllText(Path.Combine(PATH, ".txt"), g_code);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
- 
+
     }
 }
