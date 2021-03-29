@@ -145,11 +145,10 @@ namespace Plugins
         {
             List<Plugininterface.Datatypes.Layerdatastruct> Ldata = UC.Getlayerslist(true);
             MessageBox.Show("" + Ldata[1].Isactive);
-            MessageBox.Show(e.ToString());
-            /*WriteGcode(x, y, z);*/
+            /*WriteGCode(x, y, z);*/
         }
 
-        private void WriteGcode(double x, double y, double z)
+        private void WriteGCode(double x, double y, double z)
         {
             try
             {
