@@ -95,16 +95,12 @@ namespace Plugins
 
             try
             {
-                /*              myform.label1.Text = "X: " + UC.Getfield(true, 226);
-                                myform.label2.Text = "Y: " + UC.Getfield(true, 227);
-                                myform.label3.Text = "Z: " + UC.Getfield(true, 228);
-                                myform.label4.Text = "A: " + UC.Getfield(true, 229); 
-                                myform.label5.Text = "Set feed: " + UC.Getfield(true, 867);
-                                myform.label6.Text = "Act feed: " + UC.Getfield(true, 868);*/
-
-                myform.x_value = UC.Getfielddouble(true, 226);
-                myform.y_value = UC.Getfielddouble(true, 227);
-                myform.z_value = UC.Getfielddouble(true, 228);
+/*                myform.label1.Text = "X: " + UC.Getfield(true, 226);
+                myform.label2.Text = "Y: " + UC.Getfield(true, 227);
+                myform.label3.Text = "Z: " + UC.Getfield(true, 228);
+                myform.label4.Text = "A: " + UC.Getfield(true, 229);
+                myform.label5.Text = "Set feed: " + UC.Getfield(true, 867);
+                myform.label6.Text = "Act feed: " + UC.Getfield(true, 868);*/
             }
             catch (Exception) { }
 

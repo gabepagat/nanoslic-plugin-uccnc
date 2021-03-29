@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PluginForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,6 +39,8 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -79,7 +82,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.Location = new System.Drawing.Point(13, 129);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(148, 20);
+            this.label4.Size = new System.Drawing.Size(129, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Number of Coats";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -88,7 +91,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(13, 173);
+            this.label5.Location = new System.Drawing.Point(13, 237);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(137, 20);
             this.label5.TabIndex = 4;
@@ -97,7 +100,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(186, 173);
+            this.button1.Location = new System.Drawing.Point(186, 237);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
@@ -162,11 +165,35 @@
             this.comboBox4.Size = new System.Drawing.Size(116, 21);
             this.comboBox4.TabIndex = 18;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(13, 165);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 20);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Bottom Left: ";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(13, 201);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 20);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Top Right: ";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // PluginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(314, 235);
+            this.ClientSize = new System.Drawing.Size(320, 292);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
@@ -177,7 +204,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Icon = System.Drawing.SystemIcons.Information;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PluginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "G-Code Generator";
@@ -191,7 +218,7 @@
 
         #endregion
 
-        public double x_value, y_value, z_value;
+        public double x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
@@ -202,5 +229,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox4;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label7;
     }
 }

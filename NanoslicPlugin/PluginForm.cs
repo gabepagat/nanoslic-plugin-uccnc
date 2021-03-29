@@ -30,7 +30,7 @@ namespace Plugins
             CheckForIllegalCrossThreadCalls = false;
 
             // Add onClick for Generate button
-            this.button1.Click += (s, ea) => this.Button1_Click(sender, ea, new SprayParameters(x_value, y_value, z_value, this.comboBox3.SelectedItem, this.comboBox2.SelectedItem, this.comboBox1.SelectedItem, this.comboBox4.SelectedItem));
+            this.button1.Click += (s, ea) => this.Button1_Click(sender, ea, new SprayParameters(x1, y1, z1, x2, y2, z2, this.comboBox3.SelectedItem, this.comboBox2.SelectedItem, this.comboBox1.SelectedItem, this.comboBox4.SelectedItem));
             
             // Default values for ComboBoxes
             this.comboBox1.SelectedIndex = 0;
