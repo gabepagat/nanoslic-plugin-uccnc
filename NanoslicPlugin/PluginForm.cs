@@ -28,7 +28,7 @@ namespace Plugins
         private void PluginForm_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
-            this.button1.Click += (s, ea) => this.button1_Click(sender, ea, new SprayParameters(x_value, y_value, z_value, 0, 0, 0, 0));
+            this.button1.Click += (s, ea) => this.Button1_Click(sender, ea, new SprayParameters(x_value, y_value, z_value, this.comboBox3.SelectedItem, this.comboBox2.SelectedItem, this.comboBox1.SelectedItem, this.comboBox4.SelectedItem));
         }
 
         private void jogXplusbutton_MouseDown(object sender, MouseEventArgs e)
@@ -142,14 +142,14 @@ namespace Plugins
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e, SprayParameters parameters)
+        private void Button1_Click(object sender, EventArgs e, SprayParameters parameters)
         {
             List<Plugininterface.Datatypes.Layerdatastruct> Ldata = UC.Getlayerslist(true);
             MessageBox.Show("" + Ldata[1].Isactive);
-            WriteGCode(parameters.x, parameters.y, parameters.z);
+            WriteGCode(parameters);
         }
 
-        private void WriteGCode(double x, double y, double z)
+        private void WriteGCode(SprayParameters parameters)
         {
             try
             {
@@ -163,12 +163,13 @@ namespace Plugins
                 }
 
                 // for loop generate g_code
+                g_code += String.Format("{0} {1} {2} {3}\n", parameters.numRepeats, parameters.overSpray, parameters.passSpacing, parameters.spraySpeed);
 
                 // Concat ending lines
                 g_code += "G0Z6.000\nG0Z20.000\nG0X0.000Y0.000\nM2\n%\n";
 
                 // Write to file
-                File.WriteAllText(Path.Combine(PATH, String.Format("{0}x_{1}y_{2}z.txt", x, y, z)), g_code);
+                File.WriteAllText(Path.Combine(PATH, String.Format("{0}x_{1}y_{2}z.txt", parameters.x, parameters.y, parameters.z)), g_code);
             }
             catch (Exception e)
             {
