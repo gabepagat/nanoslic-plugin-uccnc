@@ -10,6 +10,7 @@ using System.IO;
 
 namespace Plugins
 {
+
     public partial class PluginForm : Form
     {
         private Plugininterface.Entry UC;
@@ -140,17 +141,18 @@ namespace Plugins
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e, double x, double y, double z)
+        private void button1_Click(object sender, EventArgs e)
         {
             List<Plugininterface.Datatypes.Layerdatastruct> Ldata = UC.Getlayerslist(true);
             MessageBox.Show("" + Ldata[1].Isactive);
-            WriteGcode(x, y, z);
+            MessageBox.Show(e.ToString());
+            /*WriteGcode(x, y, z);*/
         }
 
         private void WriteGcode(double x, double y, double z)
         {
             try
-            {   
+            {
                 // File headers
                 String g_code = "%\nG21 G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000M3\n";
 
@@ -173,6 +175,5 @@ namespace Plugins
                 MessageBox.Show(e.Message);
             }
         }
-
     }
 }

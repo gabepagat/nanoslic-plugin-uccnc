@@ -28,24 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.x_value = new double();
-            this.y_value = new double();
-            this.z_value = new double();
-
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-/*            this.jogXplusbutton = new System.Windows.Forms.Button();
-            this.jogXminusbutton = new System.Windows.Forms.Button();
-            this.jogYminusbutton = new System.Windows.Forms.Button();
-            this.jogZminusbutton = new System.Windows.Forms.Button();
-            this.jogAminusbutton = new System.Windows.Forms.Button();
-            this.jogYplusbutton = new System.Windows.Forms.Button();
-            this.jogZplusbutton = new System.Windows.Forms.Button();
-            this.jogAplusbutton = new System.Windows.Forms.Button();*/
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -54,8 +42,8 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(13, 21);
-            this.label1.Name = "passSpacing";
-            this.label1.Size = new System.Drawing.Size(107, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pass Spacing (mm)";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -65,8 +53,8 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(13, 57);
-            this.label2.Name = "overSpray";
-            this.label2.Size = new System.Drawing.Size(108, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Overspray (mm)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -76,8 +64,8 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.Location = new System.Drawing.Point(13, 93);
-            this.label3.Name = "spraySpeed";
-            this.label3.Size = new System.Drawing.Size(106, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Spray Speed (mm/m)";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -87,8 +75,8 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.Location = new System.Drawing.Point(13, 129);
-            this.label4.Name = "repeats";
-            this.label4.Size = new System.Drawing.Size(107, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(148, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Number of Repeats";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -98,7 +86,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(13, 165);
-            this.label5.Name = "generateGcode";
+            this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(132, 25);
             this.label5.TabIndex = 4;
             this.label5.Text = "Generate G-Code";
@@ -109,8 +97,8 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.Location = new System.Drawing.Point(13, 201);
-            this.label6.Name = "generate";
-            this.label6.Size = new System.Drawing.Size(131, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(153, 22);
             this.label6.TabIndex = 5;
             this.label6.Text = "Generate G-Code";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -118,12 +106,13 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(210, 203);
-            this.button1.Name = "generate";
+            this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
             this.button1.Text = "Generate";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += (sender, EventArgs) => { this.button1_Click(sender, EventArgs, x_value, y_value, z_value); };
+            this.parameters = new SprayParameters(); // create object to hold spray parameters
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // PluginForm
             // 
@@ -131,21 +120,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 235);
             this.Controls.Add(this.button1);
-/*            this.Controls.Add(this.jogAplusbutton);
-            this.Controls.Add(this.jogZplusbutton);
-            this.Controls.Add(this.jogYplusbutton);
-            this.Controls.Add(this.jogAminusbutton);
-            this.Controls.Add(this.jogZminusbutton);
-            this.Controls.Add(this.jogYminusbutton);
-            this.Controls.Add(this.jogXminusbutton);
-            this.Controls.Add(this.jogXplusbutton);*/
             this.Controls.Add(this.label6);
-/*            this.Controls.Add(this.label5);*/
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Generate Nanoslic G-Code";
+            this.Name = "PluginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generate Nanoslic G-Code";
             this.TopMost = true;
@@ -159,6 +139,7 @@
         #endregion
 
         public double x_value, y_value, z_value;
+        private SprayParameters parameters;
 
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label2;
@@ -166,15 +147,8 @@
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label label5;
         public System.Windows.Forms.Label label6;
-/*        private System.Windows.Forms.Button jogXplusbutton;
-        private System.Windows.Forms.Button jogXminusbutton;
-        private System.Windows.Forms.Button jogYminusbutton;
-        private System.Windows.Forms.Button jogZminusbutton;
-        private System.Windows.Forms.Button jogAminusbutton;
-        private System.Windows.Forms.Button jogYplusbutton;
-        private System.Windows.Forms.Button jogZplusbutton;
-        private System.Windows.Forms.Button jogAplusbutton;*/
         private System.Windows.Forms.Button button1;
+
 
     }
 }
