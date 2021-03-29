@@ -28,6 +28,7 @@ namespace Plugins
         private void PluginForm_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
+            this.button1.Click += (s, ea) => this.button1_Click(sender, ea, new SprayParameters(x_value, y_value, z_value, 0, 0, 0, 0));
         }
 
         private void jogXplusbutton_MouseDown(object sender, MouseEventArgs e)
@@ -141,11 +142,11 @@ namespace Plugins
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e, SprayParameters parameters)
         {
             List<Plugininterface.Datatypes.Layerdatastruct> Ldata = UC.Getlayerslist(true);
             MessageBox.Show("" + Ldata[1].Isactive);
-            /*WriteGCode(x, y, z);*/
+            WriteGCode(parameters.x, parameters.y, parameters.z);
         }
 
         private void WriteGCode(double x, double y, double z)
@@ -153,7 +154,7 @@ namespace Plugins
             try
             {
                 // File headers
-                String g_code = "%\nG21 G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000M3\n";
+                String g_code = "%\nG21 G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000\nM3\n";
 
                 // Create directory for g_code if it does not exist
                 if (!Directory.Exists(PATH))
