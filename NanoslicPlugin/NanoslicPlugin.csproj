@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SprayParameters.cs" />
     <Compile Include="ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
