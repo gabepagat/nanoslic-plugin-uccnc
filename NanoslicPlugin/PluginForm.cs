@@ -153,7 +153,6 @@ namespace Plugins
         private void Button1_Click(object sender, EventArgs e, SprayParameters parameters)
         {
             List<Plugininterface.Datatypes.Layerdatastruct> Ldata = UC.Getlayerslist(true);
-            MessageBox.Show("" + Ldata[1].Isactive);
             WriteGCode(parameters);
         }
 
@@ -162,7 +161,7 @@ namespace Plugins
             try
             {
                 // File headers
-                String g_code = "%\nG21 G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000\nM3\n";
+                String g_code = "G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000\nM3\n";
 
                 // Create directory for g_code if it does not exist
                 if (!Directory.Exists(PATH))
@@ -174,10 +173,13 @@ namespace Plugins
                 g_code += String.Format("{0} {1} {2} {3}\n", parameters.numRepeats, parameters.overSpray, parameters.passSpacing, parameters.spraySpeed);
 
                 // Concat ending lines
-                g_code += "G0Z6.000\nG0Z20.000\nG0X0.000Y0.000\nM2\n%\n";
+                g_code += "G0Z6.000\nG0Z20.000\nG0X0.000Y0.000\nM2\n";
 
                 // Write to file
-                File.WriteAllText(Path.Combine(PATH, String.Format("{0}x_{1}y_{2}z.txt", parameters.x, parameters.y, parameters.z)), g_code);
+                String g_code_path = Path.Combine(PATH, String.Format("{0}X_{1}Y_GCODE.txt", parameters.x, parameters.y, parameters.z));
+                File.WriteAllText(g_code_path, g_code);
+                MessageBox.Show("Generated G-code to " + g_code_path);
+                UC.Callbutton(124);
             }
             catch (Exception e)
             {
