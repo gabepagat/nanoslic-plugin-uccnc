@@ -28,7 +28,15 @@ namespace Plugins
         private void PluginForm_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
+
+            // Add onClick for Generate button
             this.button1.Click += (s, ea) => this.Button1_Click(sender, ea, new SprayParameters(x_value, y_value, z_value, this.comboBox3.SelectedItem, this.comboBox2.SelectedItem, this.comboBox1.SelectedItem, this.comboBox4.SelectedItem));
+            
+            // Default values for ComboBoxes
+            this.comboBox1.SelectedIndex = 0;
+            this.comboBox2.SelectedIndex = 0;
+            this.comboBox3.SelectedIndex = 0;
+            this.comboBox4.SelectedIndex = 0;
         }
 
         private void jogXplusbutton_MouseDown(object sender, MouseEventArgs e)
