@@ -115,6 +115,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(73, 21);
             this.comboBox1.TabIndex = 15;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // comboBox2
             // 
@@ -127,6 +128,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(73, 21);
             this.comboBox2.TabIndex = 16;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // comboBox3
             // 
@@ -139,6 +141,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(73, 21);
             this.comboBox3.TabIndex = 17;
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // comboBox4
             // 
@@ -154,6 +157,7 @@
             18000,
             17000,
             16000});
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // PluginForm
             // 
