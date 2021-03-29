@@ -160,7 +160,7 @@ namespace Plugins
                     DirectoryInfo di = Directory.CreateDirectory(PATH);
                 }
 
-                // for loop for g_code here
+                // for loop generate g_code
 
                 // Concat ending lines
                 g_code += "G0Z6.000\nG0Z20.000\nG0X0.000Y0.000\nM2\n%\n";
