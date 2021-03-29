@@ -170,7 +170,11 @@ namespace Plugins
                 }
 
                 // for loop generate g_code
-                g_code += String.Format("{0} {1} {2} {3}\n", parameters.numRepeats, parameters.overSpray, parameters.passSpacing, parameters.spraySpeed);
+                for (int i = 0; i < parameters.numCoats; i++)
+                {
+                    
+                }
+                g_code += String.Format("{0} {1} {2} {3}\n", parameters.numCoats, parameters.overSpray, parameters.passSpacing, parameters.spraySpeed);
 
                 // Concat ending lines
                 g_code += "G0Z6.000\nG0Z20.000\nG0X0.000Y0.000\nM2\n";
