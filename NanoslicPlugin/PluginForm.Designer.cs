@@ -123,7 +123,7 @@
             this.button1.TabIndex = 14;
             this.button1.Text = "Generate";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += (sender, EventArgs) => { this.button1_Click(sender, EventArgs, x_value, y_value, z_value); };
             // 
             // PluginForm
             // 

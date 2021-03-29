@@ -140,23 +140,33 @@ namespace Plugins
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e, double x, double y, double z)
         {
             List<Plugininterface.Datatypes.Layerdatastruct> Ldata = UC.Getlayerslist(true);
             MessageBox.Show("" + Ldata[1].Isactive);
-            WriteGcode();
+            WriteGcode(x, y, z);
         }
 
-        private void WriteGcode()
+        private void WriteGcode(double x, double y, double z)
         {
             try
-            {
-                String g_code = "%\nG21 G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000M3";
+            {   
+                // File headers
+                String g_code = "%\nG21 G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000M3\n";
+
+                // Create directory for g_code if it does not exist
                 if (!Directory.Exists(PATH))
                 {
                     DirectoryInfo di = Directory.CreateDirectory(PATH);
                 }
-                File.WriteAllText(Path.Combine(PATH, ".txt"), g_code);
+
+                // for loop for g_code here
+
+                // Concat ending lines
+                g_code += "G0Z6.000\nG0Z20.000\nG0X0.000Y0.000\nM2\n%\n";
+
+                // Write to file
+                File.WriteAllText(Path.Combine(PATH, String.Format("{0}x_{1}y_{2}z.txt", x, y, z)), g_code);
             }
             catch (Exception e)
             {
