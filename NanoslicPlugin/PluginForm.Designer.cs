@@ -129,7 +129,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             12.5D,
-            25,
+            25D,
             37.5D});
             this.comboBox2.Location = new System.Drawing.Point(186, 20);
             this.comboBox2.Name = "comboBox2";
@@ -242,7 +242,7 @@
 
         #endregion
 
-        public double x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0;
+        public double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;

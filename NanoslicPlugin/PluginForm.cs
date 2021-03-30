@@ -26,11 +26,11 @@ namespace Plugins
             CheckForIllegalCrossThreadCalls = false;
 
             // set variable values
-            this.x1 = 0; this.y1 = 0; this.z1 = 0;
-            this.x2 = 0; this.y2 = 0; this.z2 = 0;
+            this.x1 = 0; this.y1 = 0;
+            this.x2 = 0; this.y2 = 0;
 
             // Add onClick for Generate button
-            this.button1.Click += (s, ea) => this.Button1_Click(sender, ea, new SprayParameters(x1, y1, z1, x2, y2, z2, this.comboBox3.SelectedItem, this.comboBox2.SelectedItem, this.comboBox1.SelectedItem, this.comboBox4.SelectedItem));
+            this.button1.Click += (s, ea) => this.Button1_Click(sender, ea, new SprayParameters(x1, y1, x2, y2, this.comboBox3.SelectedItem, this.comboBox2.SelectedItem, this.comboBox1.SelectedItem, this.comboBox4.SelectedItem));
             
             // Default values for ComboBoxes
             this.comboBox1.SelectedIndex = 0;
@@ -161,7 +161,7 @@ namespace Plugins
             try
             {
                 // File headers
-                String g_code = "%\nG40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000\nM3\n";
+                String g_code = "%\nG40 G49 G64 P0.03 M6 T1\nG17\nM7\nM8\n";
 
                 // Create directory for g_code if it does not exist
                 if (!Directory.Exists(PATH))
@@ -169,14 +169,52 @@ namespace Plugins
                     DirectoryInfo di = Directory.CreateDirectory(PATH);
                 }
 
+                // Loop variables
+                double currentX = parameters.x2, currentY = parameters.y2, spacingDelta;
+                int verticalPasses = (int) Math.Ceiling((parameters.x2 - parameters.x1) / parameters.passSpacing);
+                int horizontalPasses = (int) Math.Ceiling((parameters.y2 - parameters.y1) / parameters.passSpacing);
+
+                // Go to start and turn on sprayer
+                g_code += String.Format("G0X{0:F}G0Y{1:F}S{2:F1}\nM3\n", currentX, currentY, parameters.spraySpeed);
+
                 // for loop generate g_code
                 for (int i = 0; i < parameters.numCoats; i++)
                 {
-                    // TODO: Implement g_code generation
+
+                    g_code += "( HORIZONTAL PASSES )\n";
+
+                    spacingDelta = currentY >= parameters.y2 ? -parameters.passSpacing : parameters.passSpacing;
+                    for (int j = 0; j <= horizontalPasses; j++) // <= beacuse we want to spray across the last pass row
+                    {
+                        currentX = currentX >= parameters.x2 ? parameters.x1 : parameters.x2;
+                        g_code += String.Format("G1X{0:F}F{1:F1}\n", currentX, parameters.spraySpeed);
+
+                        if (j != horizontalPasses)
+                        {
+                            currentY += spacingDelta;
+                            g_code += String.Format("G0Y{0:F}\n", currentY);
+                        }
+                    }
+
+                    g_code += "( VERTICAL PASSES )\n";
+
+                    spacingDelta = currentX >= parameters.x2 ? -parameters.passSpacing : parameters.passSpacing;
+                    for (int k = 0; k <= verticalPasses; k++) // <= beacuse we want to spray across the last pass row
+                    {
+                        currentY = currentY >= parameters.y2 ? parameters.y1 : parameters.y2;
+                        g_code += String.Format("G1Y{0:F}F{1:F1}\n", currentY, parameters.spraySpeed);
+
+                        if (k != verticalPasses)
+                        {
+                            currentX += spacingDelta;
+                            g_code += String.Format("G0X{0:F}\n", currentX);
+                        }
+                    }
+
                 }
 
                 // Concat ending lines
-                g_code += "G0X0.000Y0.000S12000\nM2\n%\n";
+                g_code += "M9\nM2\n%\n";
 
                 // Write to file
                 String g_code_path = Path.Combine(PATH, "nanoslic_gcode.txt");
@@ -195,7 +233,6 @@ namespace Plugins
             // get fields and update variables
             this.x1 = UC.Getfielddouble(true, 226);
             this.y1 = UC.Getfielddouble(true, 227);
-            this.z1 = UC.Getfielddouble(true, 228);
 
             // update label
             this.label6.Text = String.Format("Bottom Left: ({0:F}, {1:F})", x1, y1);
@@ -206,7 +243,6 @@ namespace Plugins
             // get fields and update variables
             this.x2 = UC.Getfielddouble(true, 226);
             this.y2 = UC.Getfielddouble(true, 227);
-            this.z2 = UC.Getfielddouble(true, 228);
 
             // update label
             this.label7.Text = String.Format("Top Right: ({0:F}, {1:F})", x2, y2);
