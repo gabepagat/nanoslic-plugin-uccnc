@@ -33,10 +33,6 @@ namespace Plugins
             this.x1 = 0; this.y1 = 0; this.z1 = 0;
             this.x2 = 0; this.y2 = 0; this.z2 = 0;
 
-            // set dependant labels
-            this.label6.Text = String.Format("Bottom Left: ({0:F}, {1:F})", x1, y1);
-            this.label7.Text = String.Format("Top Right: ({0:F}, {1:F})", x2, y2);
-
             // Add onClick for Generate button
             this.button1.Click += (s, ea) => this.Button1_Click(sender, ea, new SprayParameters(x1, y1, z1, x2, y2, z2, this.comboBox3.SelectedItem, this.comboBox2.SelectedItem, this.comboBox1.SelectedItem, this.comboBox4.SelectedItem));
             
@@ -205,6 +201,9 @@ namespace Plugins
             this.x1 = UC.Getfielddouble(true, 226);
             this.y1 = UC.Getfielddouble(true, 227);
             this.z1 = UC.Getfielddouble(true, 228);
+
+            // update label
+            this.label6.Text = String.Format("Bottom Left: ({0:F}, {1:F})", x1, y1);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -213,6 +212,9 @@ namespace Plugins
             this.x2 = UC.Getfielddouble(true, 226);
             this.y2 = UC.Getfielddouble(true, 227);
             this.z2 = UC.Getfielddouble(true, 228);
+
+            // update label
+            this.label7.Text = String.Format("Top Right: ({0:F}, {1:F})", x2, y2);
         }
     }
 }
