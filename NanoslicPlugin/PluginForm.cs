@@ -174,7 +174,6 @@ namespace Plugins
                 {
                     
                 }
-                g_code += String.Format("{0} {1} {2} {3}\n", parameters.numCoats, parameters.overSpray, parameters.passSpacing, parameters.spraySpeed);
 
                 // Concat ending lines
                 g_code += "\nG0X0.000Y0.000S12000\nM2\n%\n";
