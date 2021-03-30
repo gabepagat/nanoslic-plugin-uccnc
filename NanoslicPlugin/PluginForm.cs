@@ -172,11 +172,11 @@ namespace Plugins
                 // for loop generate g_code
                 for (int i = 0; i < parameters.numCoats; i++)
                 {
-                    
+                    // TODO: Implement g_code generation
                 }
 
                 // Concat ending lines
-                g_code += "\nG0X0.000Y0.000S12000\nM2\n%\n";
+                g_code += "G0X0.000Y0.000S12000\nM2\n%\n";
 
                 // Write to file
                 String g_code_path = Path.Combine(PATH, "nanoslic_gcode.txt");
