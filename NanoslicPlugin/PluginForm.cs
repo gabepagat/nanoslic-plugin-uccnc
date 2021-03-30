@@ -219,6 +219,13 @@ namespace Plugins
                 // Write to file
                 String g_code_path = Path.Combine(PATH, "nanoslic_gcode.txt");
                 File.WriteAllText(g_code_path, g_code);
+
+                // Display message if overspray amount is corrected
+                if (parameters.correctionMessage.Length > 0)
+                {
+                    MessageBox.Show(parameters.correctionMessage, "Overspray Correction");
+                }
+
                 MessageBox.Show("Output g-code to " + Path.GetFullPath(g_code_path), "Finished generating g-code");
                 UC.Callbutton(124);
             }
