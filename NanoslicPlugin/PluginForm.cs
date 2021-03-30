@@ -180,7 +180,7 @@ namespace Plugins
                 g_code += "G0Z6.000\nG0Z20.000\nG0X0.000Y0.000\nM2\n";
 
                 // Write to file
-                String g_code_path = Path.Combine(PATH, String.Format("{0}X_{1}Y_GCODE.txt", parameters.x, parameters.y, parameters.z));
+                String g_code_path = Path.Combine(PATH, "NANOSLIC_GCODE.txt");
                 File.WriteAllText(g_code_path, g_code);
                 MessageBox.Show("Generated G-code to " + g_code_path);
                 UC.Callbutton(124);
@@ -189,6 +189,28 @@ namespace Plugins
             {
                 MessageBox.Show(e.Message);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // get fields and update variables
+            this.x1 = UC.Getfielddouble(true, 226);
+            this.y1 = UC.Getfielddouble(true, 227);
+            this.z1 = UC.Getfielddouble(true, 228);
+
+            // update label
+            this.label6.Text = String.Format("Bottom Left: ({0:F}, {1:F})", x1, y1);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // get fields and update variables
+            this.x2 = UC.Getfielddouble(true, 226);
+            this.y2 = UC.Getfielddouble(true, 227);
+            this.z2 = UC.Getfielddouble(true, 228);
+
+            // update label
+            this.label7.Text = String.Format("Top Right: ({0:F}, {1:F})", x2, y2);
         }
     }
 }
