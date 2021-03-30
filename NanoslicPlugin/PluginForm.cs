@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
@@ -16,7 +12,7 @@ namespace Plugins
         private Plugininterface.Entry UC;
         UCCNCplugin Pluginmain;
         bool mustclose = false;
-        const string PATH = @".\Nanoslic_gcode";
+        string PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UCCNC", "Geometric_codes");
 
         public PluginForm(UCCNCplugin Pluginmain)
         {
@@ -165,7 +161,7 @@ namespace Plugins
             try
             {
                 // File headers
-                String g_code = "G40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000\nM3\n";
+                String g_code = "%\nG40 G49 G64 P0.03 M6 T1\nG17\nM7\nG0Z20.000\nG0X0.000Y0.000S12000\nM3\n";
 
                 // Create directory for g_code if it does not exist
                 if (!Directory.Exists(PATH))
@@ -181,12 +177,12 @@ namespace Plugins
                 g_code += String.Format("{0} {1} {2} {3}\n", parameters.numCoats, parameters.overSpray, parameters.passSpacing, parameters.spraySpeed);
 
                 // Concat ending lines
-                g_code += "G0Z6.000\nG0Z20.000\nG0X0.000Y0.000\nM2\n";
+                g_code += "\nG0X0.000Y0.000S12000\nM2\n%\n";
 
                 // Write to file
-                String g_code_path = Path.Combine(PATH, "NANOSLIC_GCODE.txt");
+                String g_code_path = Path.Combine(PATH, "nanoslic_gcode.txt");
                 File.WriteAllText(g_code_path, g_code);
-                MessageBox.Show("Generated G-code to " + g_code_path);
+                MessageBox.Show("Output g-code to " + Path.GetFullPath(g_code_path), "Finished generating g-code");
                 UC.Callbutton(124);
             }
             catch (Exception e)
