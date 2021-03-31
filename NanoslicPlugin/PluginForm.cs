@@ -36,87 +36,7 @@ namespace Plugins
             this.comboBox1.SelectedIndex = 0;
             this.comboBox2.SelectedIndex = 0;
             this.comboBox3.SelectedIndex = 0;
-            this.comboBox4.SelectedIndex = 0;
-        }
-
-        private void jogXplusbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(147);
-        }
-
-        private void jogXplusbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(229);
-        }
-
-        private void jogXminusbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(148);
-        }
-
-        private void jogXminusbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(230);
-        }
-
-        private void jogYplusbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(149);
-        }
-
-        private void jogYplusbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(231);
-        }
-
-        private void jogYminusbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(150);
-        }
-
-        private void jogYminusbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(232);
-        }
-
-        private void jogZplusbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(151);
-        }
-
-        private void jogZplusbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(233);
-        }
-
-        private void jogZminusbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(152);
-        }
-
-        private void jogZminusbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(234);
-        }
-
-        private void jogAplusbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(153);
-        }
-
-        private void jogAplusbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(235);
-        }
-
-        private void jogAminusbutton_MouseDown(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(154);
-        }
-
-        private void jogAminusbutton_MouseUp(object sender, MouseEventArgs e)
-        {
-            UC.Callbutton(236);
+            this.comboBox4.SelectedIndex = 4;
         }
 
         private void PluginForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -214,7 +134,7 @@ namespace Plugins
                 }
 
                 // Concat ending lines
-                g_code += "M9\nM2\n%\n";
+                g_code += "M5\nM9\nM2\n%\n";
 
                 // Write to file
                 String g_code_path = Path.Combine(PATH, "nanoslic_gcode.txt");

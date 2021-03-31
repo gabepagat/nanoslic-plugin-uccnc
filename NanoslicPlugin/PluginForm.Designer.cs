@@ -155,12 +155,14 @@
             this.comboBox4.FormatString = "0 mm/min";
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
-            22000,
-            21000,
-            19000,
-            18000,
-            17000,
-            16000});
+            40000,
+            35000,
+            30000,
+            25000,
+            20000,
+            15000,
+            10000,
+            });
             this.comboBox4.Location = new System.Drawing.Point(186, 92);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(116, 21);
