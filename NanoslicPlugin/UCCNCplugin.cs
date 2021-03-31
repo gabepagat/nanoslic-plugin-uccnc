@@ -95,12 +95,18 @@ namespace Plugins
 
             try
             {
-                // get fields and update variables
-                myform.x2 = UC.Getfielddouble(true, 226);
-                myform.y2 = UC.Getfielddouble(true, 227);
 
-                // update label
-                myform.label7.Text = String.Format("Top Right: ({0:F}, {1:F})", myform.x2, myform.y2);
+                // only update when machine is not running g-code
+                if (!UC.Getbuttonstate(128))
+                {
+                    // get fields and update variables
+                    myform.x2 = UC.Getfielddouble(true, 226);
+                    myform.y2 = UC.Getfielddouble(true, 227);
+
+                    // update label
+                    myform.label7.Text = String.Format("Top Right: ({0:F}, {1:F})", myform.x2, myform.y2);
+                }
+              
             }
             catch (Exception) { }
 
