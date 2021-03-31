@@ -244,15 +244,5 @@ namespace Plugins
             // update label
             this.label6.Text = String.Format("Bottom Left: ({0:F}, {1:F})", x1, y1);
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            // get fields and update variables
-            this.x2 = UC.Getfielddouble(true, 226);
-            this.y2 = UC.Getfielddouble(true, 227);
-
-            // update label
-            this.label7.Text = String.Format("Top Right: ({0:F}, {1:F})", x2, y2);
-        }
     }
 }
