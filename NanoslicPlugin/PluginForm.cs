@@ -226,8 +226,8 @@ namespace Plugins
                     MessageBox.Show(parameters.correctionMessage, "Overspray Correction");
                 }
 
-                MessageBox.Show("Output g-code to " + Path.GetFullPath(g_code_path), "Finished generating g-code");
-                UC.Callbutton(124);
+                MessageBox.Show("Generated g-code to " + Path.GetFullPath(g_code_path), "Loading g-code...");
+                UC.Loadfile(g_code_path);
             }
             catch (Exception e)
             {

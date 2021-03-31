@@ -19,7 +19,7 @@ namespace Plugins
             this.numCoats = (int) numCoats;
             this.spraySpeed = (int) spraySpeed;
 
-            double trueOverspray = Math.Ceiling(this.overSpray / this.passSpacing) * this.passSpacing;
+            double trueOverspray = Math.Floor(this.overSpray / this.passSpacing) * this.passSpacing;
 
             if (trueOverspray != this.overSpray)
             {
