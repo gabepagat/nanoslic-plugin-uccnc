@@ -134,7 +134,7 @@ namespace Plugins
                 }
 
                 // Concat ending lines
-                g_code += "M5\nM9\nM2\n%\n";
+                g_code += "M5\nG0X0.00Y0.00\nM9\nM2\n%\n";
 
                 // Write to file
                 String g_code_path = Path.Combine(PATH, "nanoslic_gcode.txt");
