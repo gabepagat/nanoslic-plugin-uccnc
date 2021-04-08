@@ -141,9 +141,9 @@
             this.comboBox3.FormatString = "0.## mm";
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
+            25,
             50,
-            75,
-            100});
+            75});
             this.comboBox3.Location = new System.Drawing.Point(186, 56);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(116, 21);
