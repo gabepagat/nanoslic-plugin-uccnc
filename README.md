@@ -1,1 +1,1 @@
-# NanoSlic Plugin for UNCCNC
+# NanoSlic Plugin for UCCNC
